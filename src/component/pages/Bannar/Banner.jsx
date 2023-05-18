@@ -5,8 +5,8 @@ const Banner = () => {
         <div className="relative h-screen overflow-hidden">
             <img className="absolute top-0 left-0 w-full h-full object-cover" src={logo} alt="" />
             <div className="absolute inset-0 bg-black opacity-60"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
+            <div className="absolute inset-0 flex items-center lg:ml-10">
+                <div className="">
                     <h1 className="text-3xl sm:text-5xl font-bold leading-tight mb-6">
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-teal-600">
                             Welcome to our Toy Shop!
