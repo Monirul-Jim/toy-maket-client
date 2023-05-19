@@ -21,6 +21,14 @@ const Navbar = () => {
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='/'>All Toys</Link></li>
                             <li><Link to='/technology-blog'>Blog</Link></li>
+                            <li>
+                                {user && (
+                                    <>
+                                        <Link to='/add-a-toy'>Add a Toy</Link>
+                                        <Link to='/my-toys'>My Toys</Link>
+                                    </>
+                                )}
+                            </li>
                         </ul>
                     </div>
                     <Link className="btn btn-ghost normal-case text-xl">Toy Shop</Link>
@@ -30,6 +38,14 @@ const Navbar = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/'>All Toys</Link></li>
                         <li><Link to='/technology-blog'>Blog</Link></li>
+                        <li>
+                            {user && (
+                                <>
+                                    <Link to='/add-a-toy'>Add a Toy</Link>
+                                    <Link to='/my-toys'>My Toys</Link>
+                                </>
+                            )}
+                        </li>
                     </ul>
                 </div>
                 <div className="navbar-end">

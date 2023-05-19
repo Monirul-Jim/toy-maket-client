@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ReactTabCard = ({category}) => {
-    const {Picture,Name,Price,Rating}=category
+    const {_id,Picture,Name,Price,Rating}=category
     return (
         <div>
              <div className="card w-96 bg-base-100 shadow-xl ">
@@ -13,7 +14,7 @@ const ReactTabCard = ({category}) => {
                     <p>{Rating}</p>
                     </div>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                       <Link to={`/category/${_id}`}><button className="btn btn-primary">Buy Now</button></Link>
                     </div>
                 </div>
             </div>
