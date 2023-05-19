@@ -7,6 +7,8 @@ import Register from "../pages/CreateUser/Register/Register";
 import Blog from "../pages/Blog/Blog";
 import SingleToyDetails from "../pages/Tab/SingleToyDetails/SingleToyDetails";
 import PrivateRoutes from "./PrivateRoute/PrivateRoutes";
+import AddedToy from "../../PrivateToy/AddedToy/AddedToy";
+import MyToys from "../../PrivateToy/MyToys/MyToys";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +31,15 @@ const router = createBrowserRouter([
         {
             path:'/technology-blog',
             element:<Blog></Blog>
+        },
+        {
+          path:'/add-a-toy',
+          element:<AddedToy></AddedToy>
+        },
+        {
+          path:'/my-toys',
+          element:<MyToys></MyToys>
+
         },
         {
             path:'/login',

@@ -5,8 +5,9 @@ import Swal from 'sweetalert2';
 
 const ReactTabCard = ({ category }) => {
     const { _id, Picture, Name, Price, Rating } = category
+    // console.log(category);
     const { user } = useContext(AuthContext)
-    const handleBuyNowClick = () => {
+    const handleViewDetails = () => {
         if (!user) {
             Swal.fire('You have to login first!', 'Please Login!', 'error');
         }
@@ -22,7 +23,7 @@ const ReactTabCard = ({ category }) => {
                         <p>{Rating}</p>
                     </div>
                     <div className="card-actions justify-end">
-                        <Link to={`/category/${_id}`}><button onClick={handleBuyNowClick} className="btn btn-primary">Buy Now</button></Link>
+                        <Link to={`/category/${_id}`}><button onClick={handleViewDetails} className="btn btn-primary">View Details</button></Link>
                     </div>
                 </div>
             </div>
