@@ -18,7 +18,9 @@ const Banner = () => {
                             Explore our wide selection of toys
                         </span>
                     </h2>
+                    <button className="btn btn-outline btn-primary text-white">Visit Our Shop</button>
                 </div>
+             
             </div>
         </div>
     );

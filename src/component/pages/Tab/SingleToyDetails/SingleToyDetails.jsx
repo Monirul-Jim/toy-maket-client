@@ -1,12 +1,12 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import SingleToyCard from './singleToyCard/SingleToyCard';
 
 const SingleToyDetails = () => {
     const details=useLoaderData()
-    console.log(details);
     return (
-        <div>
-            this is single card details
+        <div className='mt-4'>
+            <SingleToyCard detail={details} ></SingleToyCard>
         </div>
     );
 };
