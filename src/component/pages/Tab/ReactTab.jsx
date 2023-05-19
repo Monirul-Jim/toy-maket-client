@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ReactTabCard from './ReactTabCard/ReactTabCard';
 const ReactTab = () => {
-  const [selectedCategoryId, setSelectedCategoryId] = useState(2);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(1);
   const [categories, setCategories] = useState([])
   useEffect(() => {
     fetch(`http://localhost:5000/category-data/${selectedCategoryId}`)
@@ -15,16 +15,17 @@ const ReactTab = () => {
   };
   console.log(categories);
   return (
-    <div>
+    <div className='mt-14'>
+      <h1 className='text-2xl font-bold text-center'>All Category Of Car You Find Here</h1>
       <Tabs>
         <TabList>
-          <Tab onClick={() => handleTabClick(1)} >Title 1</Tab>
-          <Tab onClick={() => handleTabClick(2)}>Title 2</Tab>
-          <Tab onClick={() => handleTabClick(3)}>Title 3</Tab>
+          <Tab onClick={() => handleTabClick(1)} >Sports Car</Tab>
+          <Tab onClick={() => handleTabClick(2)}>Fire Truck</Tab>
+          <Tab onClick={() => handleTabClick(3)}>Police Car</Tab>
         </TabList>
 
 
-        <div className="content-tabs grid  lg:grid-cols-3">
+        <div className=" grid sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-16">
         {categories.map((category, index) => (
           <div key={index}  className={selectedCategoryId === index + 1 ? "content active-content" : "content"}>
            <ReactTabCard category={category}></ReactTabCard>
