@@ -13,7 +13,6 @@ const ReactTab = () => {
   const handleTabClick = (categoryId) => {
     setSelectedCategoryId(categoryId);
   };
-  console.log(categories);
   return (
     <div className='mt-14'>
       <h1 className='text-2xl font-bold text-center'>All Category Of Car You Find Here</h1>

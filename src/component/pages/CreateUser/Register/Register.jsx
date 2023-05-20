@@ -23,7 +23,6 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user
                 updatePic({displayName:name,photoURL:photoUrl})
-                console.log(loggedUser);
                 setSuccess('Successfully registered!');
                 form.reset()
             })

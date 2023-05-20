@@ -5,7 +5,6 @@ import Swal from 'sweetalert2';
 
 const ReactTabCard = ({ category }) => {
     const { _id, Picture, Name, Price, Rating } = category
-    // console.log(category);
     const { user } = useContext(AuthContext)
     const handleViewDetails = () => {
         if (!user) {
