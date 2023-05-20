@@ -4,7 +4,6 @@ import AllToysRow from './AllToysRow';
 const AllToys = () => {
     const [searchText,setSearchText]=useState('')
     const [loadedData,setLoadedData]=useState([])
-    console.log(loadedData);
     useEffect(()=>{
         fetch('http://localhost:5000/order-collection')
         .then(res=>res.json())
