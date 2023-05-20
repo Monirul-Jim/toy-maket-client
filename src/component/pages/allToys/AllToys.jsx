@@ -5,6 +5,9 @@ import DynamicTitle from '../../../Shared/DynamicTitle/DynamicTitle';
 const AllToys = () => {
     const [searchText,setSearchText]=useState('')
     const [loadedData,setLoadedData]=useState([])
+
+    
+    console.log(loadedData);
     DynamicTitle('all-toys')
     useEffect(()=>{
         fetch('https://toy-shop-phi.vercel.app/order-collection')
@@ -12,10 +15,14 @@ const AllToys = () => {
         .then(data=>setLoadedData(data))
     },[])
     const handleSearch=()=>{
-        fetch(`https://toy-shop-phi.vercel.app/order-collection/${searchText}`)
+        fetch(`https://toy-shop-phi.vercel.app/order-collect?text=${searchText}`)
         .then(res=>res.json())
-        .then(data=>setLoadedData(data))
+        .then(data=>{
+            setLoadedData(data)
+        })
     }
+    console.log(searchText);
+
     return (
         <div>
             <div className='flex justify-center space-x-3'>
