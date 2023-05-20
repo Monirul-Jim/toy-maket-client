@@ -54,9 +54,9 @@ const Login = () => {
     };
     return (
         <div>
-            <h1 className='text-blue-900 text-2xl text-center mt-4'>Please Login</h1>
+            <h1 className='text-blue-900 text-2xl text-center'>Please Login</h1>
             <div className="hero min-h-screen bg-base-200">
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-stone-200">
                     <form onSubmit={handleRegister} className="card-body">
                         {errorMessage && <p className="text-red-500">{errorMessage}</p>}
                         {
@@ -86,10 +86,9 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
-                        <p>Don't have an account please ? <Link className='text-blue-800 font-semibold underline' to='/register'>Register</Link></p>
+                        <p>Don't have an account please ? <Link className='text-blue-800 text-xl font-semibold underline' to='/register'>Register</Link></p>
                     </form>
-                    <button onClick={loginWithGooglePopup} className="btn btn-outline btn-primary">Login With Google</button>
-                    <button onClick={loginWithGithub} className="btn btn-outline btn-secondary"> Login With Github</button>
+                    <button onClick={loginWithGooglePopup} className="btn btn-outline btn-primary"> G Login With Google</button>
                 </div>
             </div>
 

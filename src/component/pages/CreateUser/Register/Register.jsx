@@ -40,7 +40,7 @@ const Register = () => {
         <div>
             <h1 className='text-blue-900 text-2xl text-center mt-4'>Please Register</h1>
             <div className="hero min-h-screen bg-base-200">
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-orange-50">
                     <form onSubmit={handleRegister} className="card-body">
                     {error && (
                             <div className="alert alert-error mb-4">{error}</div>
