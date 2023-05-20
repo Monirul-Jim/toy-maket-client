@@ -10,6 +10,7 @@ import PrivateRoutes from "./PrivateRoute/PrivateRoutes";
 import AddedToy from "../../PrivateToy/AddedToy/AddedToy";
 import MyToys from "../../PrivateToy/MyToys/MyToys";
 import AllToys from "../pages/allToys/AllToys";
+import UpdateMyToys from "../../PrivateToy/MyToys/MyToysRow/UpdateMyToys";
 
 const router = createBrowserRouter([
     {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         {
           path:'category/:id',
           element:<PrivateRoutes><SingleToyDetails></SingleToyDetails></PrivateRoutes>,
-          loader:({params})=>fetch(`http://localhost:5000/single-toy/${params.id}`)
+          loader:({params})=>fetch(`https://toy-shop-phi.vercel.app/single-toy/${params.id}`)
         },
         {
             path:'/technology-blog',
@@ -40,18 +41,17 @@ const router = createBrowserRouter([
         {
           path:'/all-toys',
           element:<AllToys></AllToys>,
-          // loader:()=>fetch('http://localhost:5000/order-collection')
         },
         {
           path:'/my-toys',
           element:<PrivateRoutes><MyToys></MyToys></PrivateRoutes>,
 
         },
-        // {
-        //   path:'/update-my-toys/:id',
-        //   element:<PrivateRoutes><UpdateMyToys></UpdateMyToys></PrivateRoutes>,
-        //   loader:({params})=>fetch(`http://localhost:5000/update-toy-collection/${params.id}`)
-        // },
+        {
+          path:'/update-my-toys/:id',
+          element:<PrivateRoutes><UpdateMyToys></UpdateMyToys></PrivateRoutes>,
+          loader:({params})=>fetch(`https://toy-shop-phi.vercel.app/update-toy-collection/${params.id}`)
+        },
         {
             path:'/login',
             element:<Login></Login>

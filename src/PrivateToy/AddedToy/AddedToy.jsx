@@ -16,7 +16,7 @@ const AddedToy = () => {
         const quantity = form.quantity.value
         const selectedOption = form.selectToy.options[form.selectToy.selectedIndex].value;
         const addedProduct = { photo, name, quantity, sellerName, email, price, rating, description, selectedOption }
-        fetch('http://localhost:5000/order-collection', {
+        fetch('https://toy-shop-phi.vercel.app/order-collection', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

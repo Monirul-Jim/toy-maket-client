@@ -2,20 +2,23 @@ import React, { useContext, useEffect, useState } from 'react';
 import MyToysRow from './MyToysRow/MyToysRow';
 import { AuthContext } from '../../component/Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import DynamicTitle from '../../Shared/DynamicTitle/DynamicTitle';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [categories, setCategories] = useState([])
     const [sortedCategories, setSortedCategories] = useState(categories);
-
-    const { _id } = categories
+    DynamicTitle('All my toys')
     useEffect(() => {
-        fetch(`http://localhost:5000/my-toys?email=${user?.email}`)
+        if(user?.email){
+            fetch(`https://toy-shop-phi.vercel.app/my-toys?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setCategories(data)
+                setSortedCategories(data)
             })
-    }, [])
+        }
+    }, [user])
     const handleDeleteMyToys = _id => {
         Swal.fire({
             title: 'Are you sure?',
@@ -27,7 +30,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/my-toys/${_id}`, {
+                fetch(`https://toy-shop-phi.vercel.app/my-toys/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -40,49 +43,51 @@ const MyToys = () => {
                             )
                         }
                         const remaining = categories.filter(booking => booking._id !== _id)
-                        setCategories(remaining)
+                        setSortedCategories(remaining)
 
                     })
 
             }
         })
     }
-    const handleUpdateToy = (event) => {
-        event.preventDefault()
-        const form = event.target
-        const price = form.price.value
-        const quantity = form.quantity.value
-        const description = form.description.value
-        const updateProduct = { quantity, price, description }
-        fetch(`http://localhost:5000/update-toy-collection/${_id}`, {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(updateProduct)
+    // const handleUpdateToy = (event) => {
+    //     event.preventDefault()
+    //     const form = event.target
+    //     const price = form.price.value
+    //     const quantity = form.quantity.value
+    //     const description = form.description.value
+    //     const id = form.id.value
+    //     const updateProduct = { quantity, price, description }
+    //     fetch(`https://toy-shop-phi.vercel.app/update-toy-collection/${id}`, {
+    //         method: "PUT",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(updateProduct)
 
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    Swal.fire({
-                        title: 'Successful!',
-                        text: 'You added a coffee ',
-                        icon: 'success',
-                        confirmButtonText: 'Go Back'
-                    })
-                }
-            })
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setCategories(data);
+    //             if (data.modifiedCount > 0) {
+    //                 Swal.fire({
+    //                     title: 'Successful!',
+    //                     text: 'You added a coffee ',
+    //                     icon: 'success',
+    //                     confirmButtonText: 'Go Back'
+    //                 })
+    //             }
+    //         })
 
-    }
+    // }
     const handleSortAscending = () => {
         const sorted = [...categories].sort((a, b) => a.price - b.price);
         setSortedCategories(sorted);
-      };
-      const handleSortDescending=()=>{
-        const result = [...categories].sort((a,b) => b.price - a.price);
+    };
+    const handleSortDescending = () => {
+        const result = [...categories].sort((a, b) => b.price - a.price);
         setSortedCategories(result);
-      }
+    }
     return (
         <div>
             <div className='flex justify-center space-x-4 mb-4'>
@@ -105,7 +110,7 @@ const MyToys = () => {
                     </thead>
                     <tbody>
                         {
-                            sortedCategories.map(category => <MyToysRow handleUpdateToy={handleUpdateToy} key={category._id} handleDeleteMyToys={handleDeleteMyToys} category={category} ></MyToysRow>)
+                            sortedCategories.map(category => <MyToysRow  key={category._id} handleDeleteMyToys={handleDeleteMyToys} category={category} ></MyToysRow>)
                         }
                     </tbody>
                 </table>

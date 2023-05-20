@@ -6,7 +6,7 @@ const ReactTab = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(1);
   const [categories, setCategories] = useState([])
   useEffect(() => {
-    fetch(`http://localhost:5000/category-data/${selectedCategoryId}`)
+    fetch(`https://toy-shop-phi.vercel.app/category-data/${selectedCategoryId}`)
       .then(res => res.json())
       .then(data => setCategories(data))
   }, [selectedCategoryId])

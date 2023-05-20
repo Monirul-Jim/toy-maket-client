@@ -1,6 +1,8 @@
 import React from 'react';
+import DynamicTitle from '../../../Shared/DynamicTitle/DynamicTitle';
 
 const Blog = () => {
+    DynamicTitle('blog page')
     return (
         <div >
             <h1 className='text-3xl text-black font-semibold'>1)What is an access token and refresh token? How do they work and where should we store them on the client-side?

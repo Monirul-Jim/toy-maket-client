@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import AllToysRow from './AllToysRow';
+import DynamicTitle from '../../../Shared/DynamicTitle/DynamicTitle';
 
 const AllToys = () => {
     const [searchText,setSearchText]=useState('')
     const [loadedData,setLoadedData]=useState([])
+    DynamicTitle('all-toys')
     useEffect(()=>{
-        fetch('http://localhost:5000/order-collection')
+        fetch('https://toy-shop-phi.vercel.app/order-collection')
         .then(res=>res.json())
         .then(data=>setLoadedData(data))
     },[])
     const handleSearch=()=>{
-        fetch(`http://localhost:5000/order-collection/${searchText}`)
+        fetch(`https://toy-shop-phi.vercel.app/order-collection/${searchText}`)
         .then(res=>res.json())
         .then(data=>setLoadedData(data))
     }

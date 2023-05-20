@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import ShowModal from './Modal/ShowModal';
+import { Link } from 'react-router-dom';
 
-const MyToysRow = ({ category, handleDeleteMyToys,handleUpdateToy }) => {
+const MyToysRow = ({ category, handleDeleteMyToys }) => {
     const { _id, description, email, name, photo, price, quantity, rating, selectedOption, sellerName } = category;
 
 
@@ -25,7 +26,7 @@ const MyToysRow = ({ category, handleDeleteMyToys,handleUpdateToy }) => {
                 </td>
                 <td>
                 <div className="flex flex-col">
-                        <span className="mb-2">Customer Name: {email}</span>
+                        <span className="mb-2">Email: {email}</span>
                     </div>
                 </td>
                 <td>
@@ -41,15 +42,15 @@ const MyToysRow = ({ category, handleDeleteMyToys,handleUpdateToy }) => {
                     <div className="font-bold">{name}</div>
                 </td>
                 <th>
-                    {/* <Link to={`/update-my-toys/${_id}`}><button   className="btn btn-ghost btn-xs">Update</button></Link> */}
-                    <label htmlFor="my-modal"  className="btn btn-ghost btn-xs">Update</label>
+                    <Link to={`/update-my-toys/${_id}`}><button className="btn btn-ghost btn-xs">Update</button></Link>
+                    {/* <label htmlFor="my-modal"  className="btn btn-ghost btn-xs">Update</label> */}
                     {/* <button   className="btn btn-ghost btn-xs">Update</button> */}
                     <button onClick={() => handleDeleteMyToys(_id)} className="btn btn-ghost btn-xs">
                         Delete
                     </button>
                 </th>
                 <td>
-                <ShowModal handleUpdateToy={()=>handleUpdateToy(_id)}></ShowModal>
+                {/* <ShowModal id={_id} handleUpdateToy={handleUpdateToy}></ShowModal> */}
                 </td>
             </tr>
     );

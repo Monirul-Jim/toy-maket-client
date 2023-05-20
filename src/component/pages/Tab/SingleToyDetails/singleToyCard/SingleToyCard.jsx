@@ -3,7 +3,7 @@ import React from 'react';
 const SingleToyCard = ({ detail }) => {
     const {Picture, Name, Price, Rating, Description, Features, battery_backup,seller_name,quantity,seller_email } = detail
     // const handleAddToCart=()=>{
-    //     fetch("http://localhost:5000/order-collection",{
+    //     fetch("https://toy-shop-phi.vercel.app/order-collection",{
     //         method:"POST",
     //         headers:{
     //             'content-Type': 'application/json'

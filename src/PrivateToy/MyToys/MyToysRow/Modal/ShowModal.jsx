@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ShowModal = ({handleUpdateToy}) => {
+const ShowModal = ({handleUpdateToy,id}) => {
     
     return (
         <div>
@@ -10,6 +10,12 @@ const ShowModal = ({handleUpdateToy}) => {
                 <form onSubmit={handleUpdateToy}>
                 <div className='grid sm:grid-cols-1 '>
 
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">id</span>
+                        </label>
+                        <input type="text" name='id' placeholder="id" defaultValue={id} className="input input-bordered w-full max-w-xs" readOnly/>
+                    </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Price</span>
