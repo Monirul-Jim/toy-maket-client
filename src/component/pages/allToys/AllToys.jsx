@@ -15,7 +15,7 @@ const AllToys = () => {
             .then(data => setLoadedData(data))
     }, [])
     const handleSearch = () => {
-        fetch(`http://localhost:5000/order/${searchText}`)
+        fetch(`https://toy-shop-phi.vercel.app/order/${searchText}`)
 
 
             .then(res => res.json())
