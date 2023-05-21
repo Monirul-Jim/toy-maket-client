@@ -2,7 +2,8 @@ import { useEffect } from "react"
 
 const DynamicTitle=(title)=>{
     useEffect(()=>{
-        document.title=title;
+        document.title=`Jim | ${title}`
+        //  **‘PHero | About us’**.
     },[title])
 
 }

@@ -1,8 +1,10 @@
 import React from 'react';
-import error from '../../../assets/error page.jpg'
+import error from '../../../assets/error.jpg'
 import { Link } from 'react-router-dom';
+import DynamicTitle from '../../../Shared/DynamicTitle/DynamicTitle';
 
 const ErrorPage = () => {
+  DynamicTitle("Error")
     return (
         <div className="flex flex-col items-center justify-center h-screen">
       <img

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ShowModal from './Modal/ShowModal';
 import { Link } from 'react-router-dom';
 
 const MyToysRow = ({ category, handleDeleteMyToys }) => {
@@ -43,14 +42,11 @@ const MyToysRow = ({ category, handleDeleteMyToys }) => {
                 </td>
                 <th>
                     <Link to={`/update-my-toys/${_id}`}><button className="btn btn-ghost btn-xs">Update</button></Link>
-                    {/* <label htmlFor="my-modal"  className="btn btn-ghost btn-xs">Update</label> */}
-                    {/* <button   className="btn btn-ghost btn-xs">Update</button> */}
                     <button onClick={() => handleDeleteMyToys(_id)} className="btn btn-ghost btn-xs">
                         Delete
                     </button>
                 </th>
                 <td>
-                {/* <ShowModal id={_id} handleUpdateToy={handleUpdateToy}></ShowModal> */}
                 </td>
             </tr>
     );

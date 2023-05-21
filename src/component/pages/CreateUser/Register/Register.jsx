@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import DynamicTitle from '../../../../Shared/DynamicTitle/DynamicTitle';
 
 const Register = () => {
-
+    DynamicTitle("Register")
     const { user, registerUser,updatePic } = useContext(AuthContext)
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState();
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -25,6 +29,7 @@ const Register = () => {
                 updatePic({displayName:name,photoURL:photoUrl})
                 setSuccess('Successfully registered!');
                 form.reset()
+                navigate(from, { replace: true })
             })
             .then(error => {
                 console.log(error);

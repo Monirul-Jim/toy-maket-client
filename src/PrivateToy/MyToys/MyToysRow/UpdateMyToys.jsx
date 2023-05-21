@@ -1,40 +1,13 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import DynamicTitle from '../../../Shared/DynamicTitle/DynamicTitle';
 
 const UpdateMyToys = () => {
+    DynamicTitle('update-toys')
     const categories = useLoaderData()
     const [category,setCategory]=useState(categories)
-    console.log(categories);
     const {_id}=category
-    // const handleUpdateToy = (event) => {
-    //     event.preventDefault()
-    //     const form =event.target
-    //     const price = form.price.value
-    //     const quantity = form.quantity.value
-    //     const description = form.description.value
-    //     const updateProduct = { quantity, price,description}
-    //     fetch(`https://toy-shop-phi.vercel.app/update-toy-collection/${_id}`,{
-    //         method:"PUT",
-    //         headers:{
-    //             "content-type":"application/json"
-    //         },
-    //         body: JSON.stringify(updateProduct)
-
-    //     })
-    //     .then(res=>res.json())
-    //     .then(data=>{
-    //        if(data. modifiedCount>0){
-    //         Swal.fire({
-    //             title: 'Successful!',
-    //             text: 'You added a coffee ',
-    //             icon: 'success',
-    //             confirmButtonText: 'Go Back'
-    //           })
-    //        }
-    //     })
-
-    // }
     const handleUpdateToy = (event) => {
         event.preventDefault()
         const form = event.target
@@ -86,7 +59,7 @@ const UpdateMyToys = () => {
                         </label>
                         <input type="text" name='description' placeholder="description" className="input input-bordered w-full max-w-xs" required />
                     </div>
-                    <input type="submit" className='btn btn-block mt-4' value="Add Toy" />
+                    <input type="submit" className='btn btn-block mt-4' value="Update" />
                 </div>
             </form>
         </div>

@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AllToysRow from './AllToysRow';
 import DynamicTitle from '../../../Shared/DynamicTitle/DynamicTitle';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const AllToys = () => {
-    const [searchText,setSearchText]=useState('')
-    const [loadedData,setLoadedData]=useState([])
+    const {user}=useContext(AuthContext)
+    const [loadedData, setLoadedData] = useState([])
+    const [searchText, setSearchText] = useState('')
 
-    
-    console.log(loadedData);
     DynamicTitle('all-toys')
-    useEffect(()=>{
-        fetch('https://toy-shop-phi.vercel.app/order-collection')
-        .then(res=>res.json())
-        .then(data=>setLoadedData(data))
-    },[])
-    const handleSearch=()=>{
-        fetch(`https://toy-shop-phi.vercel.app/order-collect?text=${searchText}`)
-        .then(res=>res.json())
-        .then(data=>{
-            setLoadedData(data)
-        })
+    useEffect(() => {
+        fetch(`https://toy-shop-phi.vercel.app/order-collection?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setLoadedData(data))
+    }, [])
+    const handleSearch = () => {
+        fetch(`http://localhost:5000/order/${searchText}`)
+
+
+            .then(res => res.json())
+            .then(data => {
+                setLoadedData(data)
+            })
     }
-    console.log(searchText);
+
 
     return (
         <div>
             <div className='flex justify-center space-x-3'>
-                <input onChange={(e)=>setSearchText(e.target.value)} type="text" placeholder="Type here" className="input input-bordered input-primary w-full max-w-xs" />{' '}
+                <input onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Type here" className="input input-bordered input-primary w-full max-w-xs" />{' '}
                 <button onClick={handleSearch} className="btn btn-primary">Search</button>
             </div>
             <div className="overflow-x-auto w-full mt-4">

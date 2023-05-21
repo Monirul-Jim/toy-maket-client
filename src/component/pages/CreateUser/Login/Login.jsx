@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import DynamicTitle from '../../../../Shared/DynamicTitle/DynamicTitle';
 
 const Login = () => {
-    const { loginUser, handleWithGoogle, handleGithub } = useContext(AuthContext)
+    DynamicTitle("Login")
+    const { loginUser, handleWithGoogle } = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState();
@@ -35,15 +37,6 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 navigate(from, { replace: true })
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
-    const loginWithGithub = () => {
-        handleGithub()
-            .then(result => {
-                const user = result.user
             })
             .catch(error => {
                 console.log(error);
@@ -88,7 +81,7 @@ const Login = () => {
                         </div>
                         <p>Don't have an account please ? <Link className='text-blue-800 text-xl font-semibold underline' to='/register'>Register</Link></p>
                     </form>
-                    <button onClick={loginWithGooglePopup} className="btn btn-outline btn-primary"> G Login With Google</button>
+                    <button onClick={loginWithGooglePopup} className="btn btn-primary"> G Login With Google</button>
                 </div>
             </div>
 

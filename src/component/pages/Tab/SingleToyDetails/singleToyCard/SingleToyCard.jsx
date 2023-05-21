@@ -1,6 +1,8 @@
 import React from 'react';
+import DynamicTitle from '../../../../../Shared/DynamicTitle/DynamicTitle';
 
 const SingleToyCard = ({ detail }) => {
+  DynamicTitle("details car")
     const {Picture, Name, Price, Rating, Description, Features, battery_backup,seller_name,quantity,seller_email } = detail
     // const handleAddToCart=()=>{
     //     fetch("https://toy-shop-phi.vercel.app/order-collection",{

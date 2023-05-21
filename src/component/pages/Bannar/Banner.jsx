@@ -20,7 +20,7 @@ const Banner = () => {
                         <p className="text-white text-xl mb-6">Welcome to our enchanting toy shop! <br /> We offer a captivating selection of toys that inspire creativity <br /> and foster endless fun for children of all ages.</p>
                         <button className="btn btn-outline btn-primary text-white">Visit Our Shop</button>
                     </div>
-                    <div className="hidden sm:block">
+                    <div  data-aos="fade-up-left" className="hidden sm:block">
                         <img className='rounded-lg' src={logo2} alt="" />
                     </div>
 

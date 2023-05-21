@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
+import DynamicTitle from '../../Shared/DynamicTitle/DynamicTitle';
+import { AuthContext } from '../../component/Provider/AuthProvider';
 
 const AddedToy = () => {
-
+    const {user}=useContext(AuthContext)
+    DynamicTitle("Add a toy")
     const handleAddInfo = (event) => {
         event.preventDefault()
         const form = event.target
         const photo = form.photo.value
         const name = form.name.value
-        const sellerName = form.sellerName.value
-        const email = form.email.value
+        const sellerName =  user ? user.displayName : form.sellerName.value
+        const email = user ? user.email : form.email.value;
         const price = form.price.value
         const rating = form.rating.value
         const description = form.description.value
@@ -57,13 +60,13 @@ const AddedToy = () => {
                         <label className="label">
                             <span className="label-text">Seller Name</span>
                         </label>
-                        <input type="text" name='sellerName' placeholder="seller-name" className="input input-bordered w-full max-w-xs" required />
+                        <input type="text" name='sellerName' defaultValue={user?.displayName} placeholder="seller-name" className="input input-bordered w-full max-w-xs" required />
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Seller Email</span>
                         </label>
-                        <input type="email" name='email' placeholder="Seller Email" className="input input-bordered w-full max-w-xs" required />
+                        <input type="email" name='email' defaultValue={user?.email} placeholder="Seller Email" className="input input-bordered w-full max-w-xs" required />
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
