@@ -10,15 +10,10 @@ const AllToys = () => {
 
     DynamicTitle('all-toys')
     useEffect(() => {
-        if(user?.email){
-            fetch(`https://toy-shop-phi.vercel.app/order?email=${user?.email}`)
+        fetch(`https://toy-shop-phi.vercel.app/order-collection?email=${user?.email}`)
             .then(res => res.json())
-            .then(data => {
-                setCategories(data)
-                setSortedCategories(data)
-            })
-        }
-    }, [user])
+            .then(data => setLoadedData(data))
+    }, [])
     
     const handleSearch = () => {
         fetch(`https://toy-shop-phi.vercel.app/order/${searchText}`)
