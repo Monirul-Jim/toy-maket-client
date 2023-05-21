@@ -11,7 +11,7 @@ const AllToys = () => {
     DynamicTitle('all-toys')
     useEffect(() => {
         if(user?.email){
-            fetch(`https://toy-shop-phi.vercel.app/order-collection?email=${user?.email}`)
+            fetch(`https://toy-shop-phi.vercel.app/order?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setCategories(data)
