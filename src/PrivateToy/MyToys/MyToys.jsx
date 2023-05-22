@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react';
 import MyToysRow from './MyToysRow/MyToysRow';
 import { AuthContext } from '../../component/Provider/AuthProvider';
@@ -6,19 +7,37 @@ import DynamicTitle from '../../Shared/DynamicTitle/DynamicTitle';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
-    const [categories, setCategories] = useState([])
-    const [sortedCategories, setSortedCategories] = useState(categories);
+
+    // new 
+    const [loadedData, setLoadedData] = useState([])
+    const [sortedCategories, setSortedCategories] = useState(loadedData);
+    const [searchText, setSearchText] = useState('')
+
+    // const [categories, setCategories] = useState([])
+
+    // previous
+    // const [sortedCategories, setSortedCategories] = useState(categories);
     DynamicTitle('All my toys')
+
+    // new  
     useEffect(() => {
-        if(user?.email){
-            fetch(`https://toy-shop-phi.vercel.app/my-toys?email=${user?.email}`)
+        fetch(`https://toy-shop-phi.vercel.app/order-collection?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                setCategories(data)
+                setLoadedData(data)
                 setSortedCategories(data)
             })
-        }
-    }, [user])
+    }, [])
+
+    // const handleSortAscending = () => {
+    //     const sorted = [...loadedData].sort((a, b) => a.price - b.price);
+    //     setSortedCategories(sorted);
+    // };
+    // const handleSortDescending = () => {
+    //     const result = [...loadedData].sort((a, b) => b.price - a.price);
+    //     setSortedCategories(result);
+    // }
+
     const handleDeleteMyToys = _id => {
         Swal.fire({
             title: 'Are you sure?',
@@ -42,79 +61,67 @@ const MyToys = () => {
                                 'success'
                             )
                         }
-                        const remaining = categories.filter(booking => booking._id !== _id)
-                        setSortedCategories(remaining)
+                        const remaining = loadedData.filter(booking => booking._id !== _id)
+                        setLoadedData(remaining)
 
                     })
 
             }
         })
     }
-    // const handleUpdateToy = (event) => {
-    //     event.preventDefault()
-    //     const form = event.target
-    //     const price = form.price.value
-    //     const quantity = form.quantity.value
-    //     const description = form.description.value
-    //     const id = form.id.value
-    //     const updateProduct = { quantity, price, description }
-    //     fetch(`https://toy-shop-phi.vercel.app/update-toy-collection/${id}`, {
-    //         method: "PUT",
-    //         headers: {
-    //             "content-type": "application/json"
-    //         },
-    //         body: JSON.stringify(updateProduct)
 
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setCategories(data);
-    //             if (data.modifiedCount > 0) {
-    //                 Swal.fire({
-    //                     title: 'Successful!',
-    //                     text: 'You added a coffee ',
-    //                     icon: 'success',
-    //                     confirmButtonText: 'Go Back'
-    //                 })
-    //             }
-    //         })
+    const handleSortChange = (event) => {
+        const selectedOption = event.target.value;
 
-    // }
-    const handleSortAscending = () => {
-        const sorted = [...categories].sort((a, b) => a.price - b.price);
-        setSortedCategories(sorted);
+        if (selectedOption === "ascending") {
+            const sorted = [...loadedData].sort((a, b) => a.price - b.price);
+            setSortedCategories(sorted);
+        } else if (selectedOption === "descending") {
+            const sorted = [...loadedData].sort((a, b) => b.price - a.price);
+            setSortedCategories(sorted);
+        }
     };
-    const handleSortDescending = () => {
-        const result = [...categories].sort((a, b) => b.price - a.price);
-        setSortedCategories(result);
-    }
+
     return (
         <div>
-            <div className='flex justify-center space-x-4 mb-4'>
+
+            {/* <div className='flex justify-center space-x-4 mb-4'>
                 <button onClick={handleSortAscending} className="btn btn-outline btn-primary">Ascending</button>
                 <button onClick={handleSortDescending} className="btn btn-outline btn-secondary">Descending</button>
+            </div> */}
+            <div className='flex justify-end lg:mr-10 space-x-4 mt-4 mb-4'>
+                <select onChange={handleSortChange}>
+                    <option value="filter" selected>Filter</option>
+                    <option value="ascending">Ascending</option>
+                    <option value="descending">Descending</option>
+                </select>
             </div>
-            <div className="overflow-x-auto w-full">
+
+            <div className="overflow-x-auto w-full mt-4">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>Photo</th>
-                            <th>Name</th>
-                            <th>Email</th>
+                            <th>Seller</th>
+                            <th>Toy Name</th>
+                            <th> Sub-category</th>
                             <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Available Quantity</th>
                             <th>Description</th>
-                            <th>Sub Category</th>
+                            <th>Details Button</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            sortedCategories.map(category => <MyToysRow  key={category._id} handleDeleteMyToys={handleDeleteMyToys} category={category} ></MyToysRow>)
+                            sortedCategories.map(loaded => <MyToysRow handleDeleteMyToys={handleDeleteMyToys} key={loaded._id} loaded={loaded} ></MyToysRow>)
                         }
                     </tbody>
                 </table>
             </div>
+
+
+            {/* previous */}
+
         </div>
     );
 };

@@ -13,7 +13,7 @@ const ReactTabCard = ({ category }) => {
     };
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl ">
+            <div className="card w-96 bg-base-100 shadow-xl " >
                 <figure><img className='h-24' src={Picture} alt="Toy Picture" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Product Name: {Name}</h2>

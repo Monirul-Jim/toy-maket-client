@@ -21,7 +21,7 @@ const Banner = () => {
                         <button className="btn btn-outline btn-primary text-white">Visit Our Shop</button>
                     </div>
                     <div  data-aos="fade-up-left" className="hidden sm:block">
-                        <img className='rounded-lg' src={logo2} alt="" />
+                        <img className='rounded-lg  "' src={logo2} alt="" />
                     </div>
 
                 </div>

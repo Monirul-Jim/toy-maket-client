@@ -2,7 +2,7 @@ import React from 'react';
 
 const Donate = () => {
     return (
-        <div>
+        <div  data-aos="zoom-in-left" >
             <h1 className='text-2xl mt-4 font-bold text-center'>Donate and save life</h1>
             <div className="relative mt-4 rounded h-screen bg-cover bg-center" style={{ backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJlSVzsf_LfaOHNyRFdZjuf4wOycUqo-aTFccxaLBygtFZ-_8riZDOQMcqmzFUShkuz9s&usqp=CAU')" }}>
                 <div className="absolute inset-0 bg-black opacity-50"></div>

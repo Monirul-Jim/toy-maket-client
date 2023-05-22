@@ -31,34 +31,7 @@ const ReactTab = () => {
           </div>
         ))}
         </div> 
-
-        {/* {categories.map(category => (
-          <TabPanel key={category.id}>
-            {category.data.map(item => (
-              <ReactTabCard item={item}></ReactTabCard>
-            ))}
-          </TabPanel>
-        ))} */}
-
-        {/* <TabPanel>
-        <h2>Any content 2</h2>
-          <h2>{categories.map(category=><p>hello</p>)}</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>Any content 2</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>Any content 3</h2>
-        </TabPanel> */}
       </Tabs>
-      {/*   
-        <div className="content-tabs grid  lg:grid-cols-3">
-        {categories.map((category, index) => (
-          <div key={index}  className={toggleState === index + 1 ? "content active-content" : "content"}>
-           <ReactTabCard category={category}></ReactTabCard>
-          </div>
-        ))}
-        </div> */}
     </div>
   );
 };
